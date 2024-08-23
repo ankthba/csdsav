@@ -16,8 +16,6 @@ I learned how to use abstract classes and interfaces to create a program that ca
 
 ****************************************************/
 
-import java.util.Scanner;
-
 // driver class for the Polygon program
 public class Pd5AnikethBandlamudiPolygonDriver {
     public static void main(String[] args) {
