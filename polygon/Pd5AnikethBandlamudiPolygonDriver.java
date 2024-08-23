@@ -18,7 +18,7 @@ I learned how to use abstract classes and interfaces to create a program that ca
 
 import java.util.Scanner;
 
-public class PolygonCalc {
+public class Pd5AnikethBandlamudiPolygonDriver {
     public static void main(String[] args) {
         Polygon[] polygons = {
             new IsoscelesTriangle(3, 4, 5),
