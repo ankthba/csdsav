@@ -2,39 +2,22 @@ import java.util.Scanner;
 
 public class PolygonCalc {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Polygon polygon = null;
+        Polygon[] polygons = {
+            new IsoscelesTriangle(3, 4, 5),
+            new EquilateralTriangle(4),
+            new Square(4),
+            new Rectangle(4, 6),
+            new Pentagon(5),
+            new Hexagon(6),
+            new Octagon(7)
+        };
 
-        System.out.println("Choose a polygon: Triangle, Quadrilateral, Pentagon, Hexagon, Octagon");
-        String choice = scanner.nextLine();
-        switch (choice) {
-            case "Triangle":
-                System.out.println("Enter base, height, side1, side2, side3");
-                polygon = new Triangle(scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble());
-                break;
-            case "Quadrilateral":
-                System.out.println("Enter side1, side2, side3, side4");
-                polygon = new Quadrilateral(scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble());
-                break;
-            case "Pentagon":
-                System.out.println("Enter side");
-                polygon = new Pentagon(scanner.nextDouble());
-                break;
-            case "Hexagon":
-                System.out.println("Enter side");
-                polygon = new Hexagon(scanner.nextDouble());
-                break;
-            case "Octagon":
-                System.out.println("Enter side");
-                polygon = new Octagon(scanner.nextDouble());
-                break;
-            default:
-                System.out.println("Invalid choice");
-                System.exit(0);
+        for (Polygon polygon : polygons) {
+            System.out.println("Polygon: " + polygon.getClass().getSimpleName());
+            System.out.println("Area: " + polygon.area());
+            System.out.println("Perimeter: " + polygon.perimeter());
+            System.out.println();
         }
-
-        System.out.println("Area: " + polygon.area());
-        System.out.println("Perimeter: " + polygon.perimeter());
     }
 }
 
@@ -43,20 +26,13 @@ interface Polygon {
     double perimeter();
 }
 
-class Triangle implements Polygon {
-    private double base, height, side1, side2, side3;
+abstract class Triangle implements Polygon {
+    protected double side1, side2, side3;
 
-    public Triangle(double base, double height, double side1, double side2, double side3) {
-        this.base = base;
-        this.height = height;
+    public Triangle(double side1, double side2, double side3) {
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
-    }
-
-    @Override
-    public double area() {
-        return 0.5 * base * height;
     }
 
     @Override
@@ -65,8 +41,34 @@ class Triangle implements Polygon {
     }
 }
 
-class Quadrilateral implements Polygon {
-    private double s1, s2, s3, s4;
+class IsoscelesTriangle extends Triangle {
+    private double base, height;
+
+    public IsoscelesTriangle(double base, double height, double side) {
+        super(base, side, side);
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public double area() {
+        return 0.5 * base * height;
+    }
+}
+
+class EquilateralTriangle extends Triangle {
+    public EquilateralTriangle(double side) {
+        super(side, side, side);
+    }
+
+    @Override
+    public double area() {
+        return (Math.sqrt(3) / 4) * side1 * side1;
+    }
+}
+
+abstract class Quadrilateral implements Polygon {
+    protected double s1, s2, s3, s4;
 
     public Quadrilateral(double s1, double s2, double s3, double s4) {
         this.s1 = s1;
@@ -76,14 +78,34 @@ class Quadrilateral implements Polygon {
     }
 
     @Override
-    public double area() {
-        double s = (s1 + s2 + s3 + s4) / 2;
-        return Math.sqrt((s - s1) * (s - s2) * (s - s3) * (s - s4));
+    public double perimeter() {
+        return s1 + s2 + s3 + s4;
+    }
+}
+
+class Square extends Quadrilateral {
+    public Square(double side) {
+        super(side, side, side, side);
     }
 
     @Override
-    public double perimeter() {
-        return s1 + s2 + s3 + s4;
+    public double area() {
+        return s1 * s1;
+    }
+}
+
+class Rectangle extends Quadrilateral {
+    private double length, width;
+
+    public Rectangle(double length, double width) {
+        super(length, width, length, width);
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double area() {
+        return length * width;
     }
 }
 
