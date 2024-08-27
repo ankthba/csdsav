@@ -207,4 +207,34 @@ class Octagon implements Polygon {
 
 /********* PROGRAM OUTPUTS ******
 The program outputs the area and perimeter of each shape in the array of polygons using the hardcoded values.
+
+
+Polygon: IsoscelesTriangle
+Area: 6.0
+Perimeter: 13.0
+
+Polygon: EquilateralTriangle
+Area: 6.928203230275509
+Perimeter: 12.0
+
+Polygon: Square
+Area: 16.0
+Perimeter: 16.0
+
+Polygon: Rectangle
+Area: 24.0
+Perimeter: 20.0
+
+Polygon: Pentagon
+Area: 43.01193501472418
+Perimeter: 25.0
+
+Polygon: Hexagon
+Area: 93.53074360871938
+Perimeter: 36.0
+
+Polygon: Octagon
+Area: 236.5929291125633
+Perimeter: 56.0
+
 **********************************/
