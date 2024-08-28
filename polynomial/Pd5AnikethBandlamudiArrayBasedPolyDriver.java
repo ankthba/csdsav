@@ -64,3 +64,12 @@ public class Pd5AnikethBandlamudiArrayBasedPolyDriver {
    }
 }
 
+interface Polynomial {
+    int degree();
+    double coefficient(int exponent);
+    double evaluate(double x);
+    Polynomial plus(Polynomial other);
+    Polynomial minus(Polynomial other);
+    Polynomial differentiate();
+}
+
