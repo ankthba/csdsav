@@ -1,61 +1,42 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Pd5AnikethBandlamudiFileIO2
-{
+public class Pd5AnikethBandlamudiFileIO2 {
     public static void main(String[] args) {
-        countFileStats();
-        convertBraceStyle();
-    }
+        String inputPath = "/Users/anikethbandlamudi/Downloads/Test.txt";
+        String outputPath = "/Users/anikethbandlamudi/Downloads/SameLineBraceStyleTest.txt";
 
-    public static void countFileStats() {
-        try (Scanner input = new Scanner(System.in);
-             Scanner fileScanner = new Scanner(new File(input.nextLine()))) {
-            
-            System.out.print("Enter the name of the file: ");
-            String fileName = input.nextLine();
-            
-            int charCount = 0, wordCount = 0, lineCount = 0;
-            
-            while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                lineCount++;
-                charCount += line.replaceAll("\\s", "").length();
-                wordCount += line.split("\\s+").length;
-            }
-            
-            System.out.println("Information about " + fileName + ":");
-            System.out.println(charCount + " characters");
-            System.out.println(wordCount + " words");
-            System.out.println(lineCount + " lines");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
-        }
-    }
+        try (Scanner scanner = new Scanner(new File(inputPath));
+             PrintStream printStream = new PrintStream(new File(outputPath))) {
 
-    public static void convertBraceStyle() {
-        try (Scanner input = new Scanner(System.in);
-             BufferedReader reader = new BufferedReader(new FileReader(input.nextLine()));
-             PrintStream writer = new PrintStream(new FileOutputStream("NextLineBraceStyleTest.txt"))) {
-            
-            System.out.print("Enter the name of the Java file to convert: ");
-            String line;
-            boolean nextLineBrace = false;
-            
-            while ((line = reader.readLine()) != null) {
-                if (nextLineBrace) {
-                    writer.print(line.trim());
-                    nextLineBrace = false;
-                } else {
-                    writer.println(line);
-                }
+            StringBuilder currentLine = new StringBuilder();
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine().strip();
                 
-                if (line.trim().endsWith("{")) {
-                    nextLineBrace = true;
+                if (line.equals("{")) {
+                    currentLine.append(" {");
+                    printStream.println(currentLine);
+                    currentLine = new StringBuilder();
+                } else {
+                    if (currentLine.length() > 0) {
+                        printStream.println(currentLine);
+                    }
+                    currentLine = new StringBuilder(line);
                 }
             }
+
+            if (currentLine.length() > 0) {
+                printStream.println(currentLine);
+            }
+
         } catch (IOException e) {
-            System.out.println("Error processing file: " + e.getMessage());
+            if (e instanceof FileNotFoundException) {
+                System.err.println("File not found: " + e.getMessage());
+                System.err.println("Please check if the input file exists at: " + inputPath);
+            } else {
+                System.err.println("Error processing file: " + e.getMessage());
+            }
         }
     }
 }
