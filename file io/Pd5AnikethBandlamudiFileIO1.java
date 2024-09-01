@@ -18,15 +18,20 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Pd5AnikethBandlamudiFileIO1 {
+    // Precondition: The input file exists and is a valid text file.
+    // Postcondition: The program outputs the number of characters, words, and lines in the file.
     public static void main(String[] args) {
         String fileName = "/Users/anikethbandlamudi/Downloads/file.txt";
         PrintStream output = System.out;
 
+        // Initialize variables to store the number of characters, words, and lines
         int characters = 0;
         int words = 0;
         int lines = 0;
 
+        // Try with resources to ensure the scanner is closed after use
         try (Scanner fileScanner = new Scanner(new File(fileName))) {
+            // Loop through each line in the file
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
                 lines++;
@@ -34,13 +39,19 @@ public class Pd5AnikethBandlamudiFileIO1 {
                 words += line.trim().split("\\s+").length;
             }
         } catch (IOException e) {
+            // If an error occurs while reading the file, print an error message
             output.println("An error occurred while reading the file: " + e.getMessage());
             return;
         }
 
+        // Output the information about the file
         output.println("Information about " + fileName + ":");
         output.println(characters + " characters");
         output.println(words + " words");
         output.println(lines + " lines");
     }
 }
+
+/********* PROGRAM OUTPUTS ******
+The program outputs the number of characters, words, and lines in the file.
+**********************************/
