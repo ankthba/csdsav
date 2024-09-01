@@ -1,25 +1,34 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+/**************************************************** 
+Name (Full Name): Aniketh Bandlamudi   Period:   5
+Name of the Lab/Assignment:  File IO Exercise #1
+Purpose of the program: To convert the brace style of a text file to the same line as the opening brace
+
+Mistakes made: Used BufferedReader and PrintWriter instead of Scanner and PrintStream.
+
+How I feel about this programming experience: I feel like I have a better understanding of how to read and write to files in Java.
+
+What I Learned: I learned how to use the Scanner and PrintStream classes to read and write to files.
+
+The credits: No help needed
+****************************************************/
+
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Pd5AnikethBandlamudiFileIO1 {
     public static void main(String[] args) {
+        String fileName = "/Users/anikethbandlamudi/Downloads/file.txt";
         PrintStream output = System.out;
-        Scanner scanner = new Scanner(System.in);
-        
-        output.print("Enter the name of the file: ");
-        String fileName = scanner.nextLine();
-        scanner.close();
 
         int characters = 0;
         int words = 0;
         int lines = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
+        try (Scanner fileScanner = new Scanner(new File(fileName))) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
                 lines++;
                 characters += line.replaceAll("\\s+", "").length();
                 words += line.trim().split("\\s+").length;
