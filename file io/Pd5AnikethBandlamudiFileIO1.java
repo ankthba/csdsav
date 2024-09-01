@@ -1,13 +1,13 @@
 /**************************************************** 
 Name (Full Name): Aniketh Bandlamudi   Period:   5
 Name of the Lab/Assignment:  File IO Exercise #1
-Purpose of the program: To convert the brace style of a text file to the same line as the opening brace
+Purpose of the program: To output the number of characters, words, and lines in a file.
 
 Mistakes made: Used BufferedReader and PrintWriter instead of Scanner and PrintStream.
 
 How I feel about this programming experience: I feel like I have a better understanding of how to read and write to files in Java.
 
-What I Learned: I learned how to use the Scanner and PrintStream classes to read and write to files.
+What I Learned: I learned how to use the Scanner class to read from a file.
 
 The credits: No help needed
 ****************************************************/
