@@ -21,7 +21,7 @@ public class Pd5AnikethBandlamudiFileIO1 {
     // Precondition: The input file exists and is a valid text file.
     // Postcondition: The program outputs the number of characters, words, and lines in the file.
     public static void main(String[] args) {
-        String fileName = "/Users/anikethbandlamudi/Downloads/file.txt";
+        String fileName = "file.txt";
         PrintStream output = System.out;
 
         // Initialize variables to store the number of characters, words, and lines

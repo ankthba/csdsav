@@ -20,8 +20,8 @@ public class Pd5AnikethBandlamudiFileIO2 {
     // Postcondition: A new file is created with the same line brace style.
     public static void main(String[] args) {
         // Strings to store the input and output file paths
-        String inputPath = "/Users/anikethbandlamudi/Downloads/Test.txt";
-        String outputPath = "/Users/anikethbandlamudi/Downloads/SameLineBraceStyleTest.txt";
+        String inputPath = "Test.txt";
+        String outputPath = "SameLineBraceStyleTest.txt";
 
         // Try with resources to ensure the scanner and print stream are closed after use
         try (Scanner scanner = new Scanner(new File(inputPath));
