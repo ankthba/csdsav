@@ -175,7 +175,11 @@ class ArrayBasedPolynomial implements Polynomial {
         for (int i = coefficients.length - 1; i >= 0; i--) {
             if (coefficients[i] != 0) {
                 if (sb.length() > 0) {
-                    sb.append(" + ");
+                    if (coefficients[i] > 0) {
+                        sb.append(" + ");  // Add space for positive coefficients
+                    } else {
+                        sb.append(" ");  // Add space for negative coefficients
+                    }
                 }
                 sb.append(coefficients[i]);
                 if (i > 0) {
@@ -189,12 +193,12 @@ class ArrayBasedPolynomial implements Polynomial {
 
 /********* PROGRAM OUTPUTS ******
 p1(x) = 4.0x^3 + 3.0x^2 + 1.0
-p2(x) = -5.0x^1 + -2.0
+p2(x) = -5.0x^1 -2.0
 p3(x) = -4.0x^1
-p(x) = 4.0x^3 + 3.0x^2 + -10.0x^1 + -3.0
-p4(x) = 4.0x^3 + 3.0x^2 + -6.0x^1 + -3.0
-p5(x) = 12.0x^2 + 6.0x^1 + -6.0
-clone(x) = 12.0x^2 + 6.0x^1 + -6.0
+p(x) = 4.0x^3 + 3.0x^2 -10.0x^1 -3.0
+p4(x) = 4.0x^3 + 3.0x^2 -6.0x^1 -3.0
+p5(x) = 12.0x^2 + 6.0x^1 -6.0
+clone(x) = 12.0x^2 + 6.0x^1 -6.0
 p5(0) = -6.0
 p5(1) = 12.0
 **********************************/
