@@ -176,9 +176,9 @@ class ArrayBasedPolynomial implements Polynomial {
             if (coefficients[i] != 0) {
                 if (sb.length() > 0) {
                     if (coefficients[i] > 0) {
-                        sb.append(" + ");  // Add space for positive coefficients
+                        sb.append(" + ");
                     } else {
-                        sb.append(" ");  // Add space for negative coefficients
+                        sb.append(" ");
                     }
                 }
                 sb.append(coefficients[i]);
