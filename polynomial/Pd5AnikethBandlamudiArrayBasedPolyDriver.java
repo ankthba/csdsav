@@ -10,7 +10,7 @@ b. I applied the concept of encapsulation by making the coefficients array priva
 c. I applied the concept of abstraction by creating a separate class for the polynomial and providing methods to perform various operations on the polynomial.
  
 Credits: I developed the code myself.
-Students whom I helped: N/A
+Students whom I helped: I explained the conecpt of derivatives, differentiation, and power rule to Malek Swilam.
 */
 
 // Driver class to test the Polynomial interface and ArrayBasedPolynomial class
