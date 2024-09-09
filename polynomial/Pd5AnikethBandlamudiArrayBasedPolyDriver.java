@@ -1,4 +1,4 @@
-/*
+/*******
 Name: Aniketh Bandlamudi
 Period: 5
 Name of the Program: U1 Lab: Polynomial
@@ -6,12 +6,16 @@ Purpose of Program: To create a polynomial class that can be used to perform var
 
 What I Learned/Reflection: 
 a. I applied the concept of polymorphism by creating an interface and implementing it in a class.
-b. I applied the concept of encapsulation by making the coefficients array private and providing public methods to access and modify the coefficients.
-c. I applied the concept of abstraction by creating a separate class for the polynomial and providing methods to perform various operations on the polynomial.
+
+b. I applied the concept of encapsulation by making the coefficients array private and providing 
+public methods to access and modify the coefficients.
+
+c. I applied the concept of abstraction by creating a separate class for the polynomial and providing
+methods to perform various operations on the polynomial.
  
 Credits: I developed the code myself.
 Students whom I helped: I explained the conecpt of derivatives, differentiation, and power rule to Malek Swilam.
-*/
+*******/
 
 // Driver class to test the Polynomial interface and ArrayBasedPolynomial class
 public class Pd5AnikethBandlamudiArrayBasedPolyDriver {
