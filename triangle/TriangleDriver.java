@@ -15,11 +15,13 @@ class Triangle {
     private int c;
 
     public Triangle(int a, int b, int c) throws IllegalTriangleException {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        
         if (a + b <= c || a + c <= b || b + c <= a) {
             throw new IllegalTriangleException("The sum of any two sides must be greater than the third side");
+        } else {
+            this.a = a;
+            this.b = b;
+            this.c = c;
         }
     }
 
