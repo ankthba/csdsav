@@ -32,3 +32,4 @@ class IllegalTriangleException extends Exception {
         super(message);
     }
 }
+
