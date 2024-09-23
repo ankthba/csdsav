@@ -13,7 +13,7 @@ What I Learned: I improved my skills in writing recursive methods.
 
 
 import java.util.Scanner;   
-public class RecursionLab
+public class Pd5AnikethBandlamudiRecursionMiniLab
 {
    //Pre: c is a lower case letter - Post: all lower case letters a-char c are printed 
    public static void letters(char c)
