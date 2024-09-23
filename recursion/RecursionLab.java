@@ -1,3 +1,17 @@
+/**************************************************** 
+Name (Full Name): Aniketh Bandlamudi   Period:   5
+Name of the Lab/Assignment:  U2: (Programming) Writing simple recursive methods
+Purpose: To practice writing different methods using recursion
+
+Mistakes made: I ran into a stack overflow error once, however, I was able to fix it quickly.
+
+How I feel about this programming experience: I feel like i have a better understanding and grasp over writing recursive methods.
+
+What I Learned: I improved my skills in writing recursive methods. 
+
+****************************************************/
+
+
 import java.util.Scanner;   
 public class RecursionLab
 {
