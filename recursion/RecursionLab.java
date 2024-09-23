@@ -139,3 +139,8 @@ public class RecursionLab
       }while(choice != 7);
    }
 }
+
+/********* PROGRAM OUTPUTS ******
+Outputs a list of options to run a specified method.
+After, it outputs the results of that method with the inputted number.
+**********************************/
