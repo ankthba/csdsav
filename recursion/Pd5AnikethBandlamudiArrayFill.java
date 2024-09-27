@@ -5,15 +5,15 @@
  * Purpose of the Program: 
  * Due Date: 9/27/24
  * Date Submitted: 9/26/24
- * What I learned: 
- * 1. 
- * 2. 
- * How I feel about this lab: 
+ * What I learned:
+ * 1. I further extended my knowledge in recursion
+ * 2. I expanded my skills in recursive exploration
+ * How I feel about this lab: I feel like I have a better grasp over this topid
  * 
  * What I wonder: 
- *
- * Student(s) who helped me (to what extent): 
- * Student(s) whom I helped (to what extent): 
+ * I wonder about the real life use cases of similar implementations of recursion
+ * Student(s) who helped me (to what extent): N/A
+ * Student(s) whom I helped (to what extent): N/A
  *************************************************************************************************************************************************/
 
    
