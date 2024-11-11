@@ -26,7 +26,7 @@ CREDITS:
 STUDENTS WHOM I HELPED: 
 */
 import java.util.*;
-public class ListExplorationExtensionShell
+public class Pd5AnikethBandlamudiSLLExploration
 {
    public static void main(String[] args)
    {
@@ -51,12 +51,12 @@ public class ListExplorationExtensionShell
       {  
          System.out.println (list1.getValue());
       }
-      
+   */
       /**** uncomment the code below for ListExploration extension  ****/
       
    	System.out.println("First = " + first(head));
       System.out.println("Second = " + second(head));
-      ListNode  <String> p = pointerToLast(head);
+      ListNode <String> p = pointToLast(head);
       System.out.println("Pointer to Last = " + p.getValue()+ " at " + p);
       ListNode  <String> c = copyOfLast(head);
       System.out.println("Copy of Last =    " + c.getValue()+ " at " + c);
@@ -71,8 +71,9 @@ public class ListExplorationExtensionShell
    // returns the value of the first node, or null if the list is empty 
    public static String first(ListNode <String> head) 
    {
-      if (head == null)
+      if (head == null) {
          return null;
+      }
 
       return head.getValue();
    }
@@ -81,8 +82,9 @@ public class ListExplorationExtensionShell
    // hint:  second could call the first of rest. 
    public static String second(ListNode <String>  head) 
    {
-      if (head == null || head.getNext() == null)
+      if (head == null || head.getNext() == null) {
          return null;
+      }
       
       return head.getNext().getValue();
    }
@@ -90,8 +92,9 @@ public class ListExplorationExtensionShell
    // list is empty.
    public static ListNode<String> pointToLast(ListNode <String> h)
    {
-      if (h == null)
+      if (h == null) {
          return null;
+      }
       
       while(h.getNext() != null) {
          h = h.getNext();
@@ -100,17 +103,23 @@ public class ListExplorationExtensionShell
       return h;
    }
    // returns a copy of the last node (not just its value!).  
-   // copyofLast can be recursive.  
+   // copyOfLast can be recursive.  
    public static ListNode<String> copyOfLast(ListNode <String> h)
    {
-      return null;
+      if (h == null) {
+         return null;
+      }
+      if (h.getNext() == null) {
+         return new ListNode<String>(h.getValue(), null);
+      }
+      return copyOfLast(h.getNext());
    }
+
    //returns a reference to a list whose first node's value is specified by the argument, and the 
    //first node's next links to the original list. 
-
    public static ListNode<String> insertFirst(ListNode <String> h, String w)
    {
-      return null;
+      return new ListNode<String>(w, h);
    }
    
    // returns a reference to a list whose last node's value is specified 
@@ -118,25 +127,69 @@ public class ListExplorationExtensionShell
    //the original list and had its next is set to null 
    public static ListNode<String> insertLast(ListNode <String> h, String w)
    {
-      return null;
+      ListNode<String> temp = new ListNode<String>(w, null);
+      ListNode<String> p = h;
+      if (h == null) {
+         return temp;
+      }
+      while(p.getNext() != null) {
+         p = p.getNext();
+      }
+      p.setNext(temp);
+      return h;
    }
-   /*
+   
    public static ListNode <String> copyListIterative (ListNode <String> list)
    {
+      if (list == null) {
+         return null;
+      }
+
+      ListNode<String> newHead = new ListNode<String>(list.getValue(), null);
+      ListNode<String> current = newHead;
+      ListNode<String> og = list.getNext();
+
+      while(og != null) {
+         current.setNext(new ListNode<String>(og.getValue(), null));
+         og = og.getNext();
+         current = current.getNext();
+      }
+
+      return newHead;
+
    } // copyListIterative
    
    public static ListNode <String> copyListRecursive (ListNode <String> list)
    {
+      if (list == null) {
+         return null;
+      }
+      return new ListNode<String>(list.getValue(), copyListRecursive(list.getNext()));
    }  // copyListRecursive
       
    public static ListNode <String> insertLastRecur (ListNode <String> list, String v)
    {
+      if (list == null) {
+         return new ListNode<String>(v, null);
+      }
+      list.setNext(insertLastRecur(list.getNext(), v));
+      return list;
    } // insertLastRecur
 
    public static ListNode <String> insertLastIter (ListNode <String> list, String v)
    {
+      ListNode<String> temp = new ListNode<String>(v, null);
+      ListNode<String> p = list;
+      if (list == null) {
+         return temp;
+      }
+      while(p.getNext() != null) {
+         p = p.getNext();
+      }
+      p.setNext(temp);
+      return list;
    } // insertLastIter
-   */
+   
    public static void print(ListNode  <String> head)
    {
       System.out.print("[");
@@ -149,15 +202,22 @@ public class ListExplorationExtensionShell
       }
       System.out.println("]");
    } // print
-   /*
-   public static void printRecur (ListNode <String> head)
+   
+   public static void printRecur(ListNode<String> head)
    {
-      if (head != null)
-      {
-         System.out.println (head.getValue());
-         printRecur (head.getNext());
+      if (head == null) {
+         return;
       }
-   } // printRecur
+      
+      // Print opening bracket only at start
+      if (head.getNext() == null) {
+         System.out.print("[" + head.getValue() + "]");
+      }
+      else {
+         System.out.print(head.getValue() + ", ");
+         printRecur(head.getNext());
+      }
+   }
    
    /* enter your code here */
       
