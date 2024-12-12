@@ -56,7 +56,7 @@ class Pd5AnikethBandlamudiCLL<E> {
         while (list != null) {
             curr.setNext(new ListNode<>(list.getValue(), null));
             curr = curr.getNext();
-            list = list.getNext();
+            list = list.getNext();  
         }
         return newHead;
     }
