@@ -20,6 +20,7 @@ CREDITS: N/A
 import java.util.*;
 public class Pd5AnikethBandlamudiTextEditor
 {
+
    public static void main(String[] args)
    {
       Scanner sc = new Scanner(System.in);
