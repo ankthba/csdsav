@@ -207,15 +207,19 @@ class AdjMat implements AdjacencyMatrix, Warshall {
       return vertices;
    }
 
-   // pre: adjacency matrix has been initialized
-   // post: matrix updated to show all reachable pairs using warshall's algorithm
+   // Implements Warshall's algorithm to compute all pairs reachability.
+   // Transforms the adjacency matrix into a reachability matrix.
    public void allPairsReachability() {
-      int size = grid.length;
-      for (int k = 0; k < size; k++) {
-         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-               if (grid[i][k] == 1 && grid[k][j] == 1)
+      int n = grid.length;
+      
+      // Warshall's algorithm
+      for (int k = 0; k < n; k++) {
+         for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+               // If vertex i can reach k AND k can reach j, then i can reach j
+               if (grid[i][k] == 1 && grid[k][j] == 1) {
                   grid[i][j] = 1;
+               }
             }
          }
       }
@@ -236,54 +240,7 @@ class AdjMat implements AdjacencyMatrix, Warshall {
       return reachables;
    }
 
-   // pre: none
-   // post: runs the program with user interaction
-   public static void main(String[] args) throws FileNotFoundException {
-      Scanner kb = new Scanner(System.in);
-      System.out.print("Warshall's Algorithm! Enter file of names: "); 
-      String fileNames = kb.next() + ".txt";
-      Scanner sc = new Scanner(new File(fileNames));
-      int size = sc.nextInt();
-      AdjMat g = new AdjMat(size);
-      g.readNames(fileNames);
-
-      System.out.print("Enter file of the matrix: ");
-      String fileGrid = kb.next() + ".txt";
-      g.readGrid(fileGrid);
-
-      System.out.println("Adjacency Matrix");
-      System.out.println(g);
-      System.out.println("Number of Edges: " + g.edgeCount());
-      System.out.println();
-
-      g.allPairsReachability();    
-      g.displayVertices();
-      System.out.println("Reachability Matrix");
-      System.out.println(g);
-      System.out.println("Number of Edges: " + g.edgeCount());
-
-      while (true) {
-         System.out.print("\nIs it reachable? Enter name of start city (-1 to exit): ");
-         String from = kb.next().trim();
-         if (from.equals("-1")) break;
-         System.out.print("                Enter name of end city: ");
-         String to = kb.next().trim();  
-         System.out.println(g.isEdge(from, to));
-      }
-
-      System.out.println("\n================== EXTENSION =================="); 
-      System.out.println("List of every city's reachable cities: ");
-      for (String city : g.getVertices().keySet()) {
-         System.out.println(city + "--> " + g.getReachables(city));
-      }
-
-      while (true) {
-         System.out.print("\nList the reachable cities from: ");
-         String from = kb.next();
-         if (from.equals("-1")) break;
-         System.out.println(g.getReachables(from));
-      }
-   }
+   
 }
 
 
@@ -292,14 +249,17 @@ public class Pd5AnikethBandlamudiWarshall {
       Scanner kb = new Scanner(System.in);
       System.out.print("Warshall's Algorithm! Enter file of names: "); 
       String fileNames = kb.next() + ".txt";
-      Scanner sc = new Scanner(new File(fileNames));
-      int size = sc.nextInt();
+      Scanner nameScanner = new Scanner(new File(fileNames));
+      int size = nameScanner.nextInt();
+      nameScanner.close();
+      
       AdjMat g = new AdjMat(size);
       g.readNames(fileNames);
-
+      
       System.out.print("Enter file of the matrix: ");
       String fileGrid = kb.next() + ".txt";
       g.readGrid(fileGrid);
+      
 
       System.out.println("Adjacency Matrix");
       System.out.println(g);
@@ -402,5 +362,56 @@ List the reachable cities from: -1
 
  */
 
+/*
+// pre: none
+   // post: runs the program with user interaction
+   public static void main(String[] args) throws FileNotFoundException {
+      Scanner kb = new Scanner(System.in);
+      System.out.print("Warshall's Algorithm! Enter file of names: "); 
+      String fileNames = kb.next() + ".txt";
+      Scanner sc = new Scanner(new File(fileNames));
+      int size = sc.nextInt();
+      AdjMat g = new AdjMat(size);
+      g.readNames(fileNames);
 
-// END PROGRAM
+      System.out.print("Enter file of the matrix: ");
+      String fileGrid = kb.next() + ".txt";
+      g.readGrid(fileGrid);
+
+      System.out.println("Adjacency Matrix");
+      System.out.println(g);
+      System.out.println("Number of Edges: " + g.edgeCount());
+      System.out.println();
+
+      g.allPairsReachability();    
+      g.displayVertices();
+      System.out.println("Reachability Matrix");
+      System.out.println(g);
+      System.out.println("Number of Edges: " + g.edgeCount());
+
+      while (true) {
+         System.out.print("\nIs it reachable? Enter name of start city (-1 to exit): ");
+         String from = kb.next().trim();
+         if (from.equals("-1")) break;
+         System.out.print("                Enter name of end city: ");
+         String to = kb.next().trim();  
+         System.out.println(g.isEdge(from, to));
+      }
+
+      System.out.println("\n================== EXTENSION =================="); 
+      System.out.println("List of every city's reachable cities: ");
+      for (String city : g.getVertices().keySet()) {
+         System.out.println(city + "--> " + g.getReachables(city));
+      }
+
+      while (true) {
+         System.out.print("\nList the reachable cities from: ");
+         String from = kb.next();
+         if (from.equals("-1")) break;
+         System.out.println(g.getReachables(from));
+      }
+   }
+ */
+
+
+// END OF PROGRAM
